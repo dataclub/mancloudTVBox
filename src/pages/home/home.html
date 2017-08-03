@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-toolbar no-border-top class="segment segment-ios-danger ">
+      <ion-segment [(ngModel)]="country">
+          <ion-segment-button value="{{country.name}}" *ngFor="let country of (countries | async)?.countries" (click)="clickCountry(country.name)">
+            <h1 class="flag-icon flag-icon-{{ country.name }}"> </h1>
+          </ion-segment-button>
+
+      </ion-segment>
+
+      <ion-buttons no-border-top end>
+        <button ion-button icon-only>
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons> 
+    </ion-toolbar>
+</ion-header>
+
+<!--ion-content class="tutorial-page">
+  <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
+      <h2 class="slide-title">Ready to Play?</h2>
+      <button ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+   
+</ion-content-->
+
+<ion-content>
+  <form (submit)="doSubmit($event)" [formGroup]="langForm">
+      <!--ion-list radio-group formControlName="langs">
+        <ion-item>
+          <ion-label>Go</ion-label>
+          <ion-radio value="golang" checked="true"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Rust</ion-label>
+          <ion-radio value="rust"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Python</ion-label>
+          <ion-radio value="python"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ruby</ion-label>
+          <ion-radio value="ruby"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Clojure</ion-label>
+          <ion-radio value="clojure"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Java</ion-label>
+          <ion-radio value="java"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>PHP</ion-label>
+          <ion-radio value="php"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>.NET</ion-label>
+          <ion-radio value="dotnet"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>C++</ion-label>
+          <ion-radio value="cplusplus"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Scala</ion-label>
+          <ion-radio value="scala"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Haskell</ion-label>
+          <ion-radio value="haskell"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Erlang</ion-label>
+          <ion-radio value="erlang"></ion-radio>
+        </ion-item>
+    </ion-list-->
+
+       <ion-list radio-group formControlName="langs">
+         
+          <ion-item *ngFor="let channel of (channels | async)?.channels">
+            <ion-label>{{ channel.name }}</ion-label>
+            <ion-radio value="{{ channel.name }}"></ion-radio>
+            <ion-thumbnail item-start>
+              <img src="assets/img/thumbnail-puppy-1.jpg">
+            </ion-thumbnail>
+            <h2>{{ channel.name }}</h2>
+        </ion-item>
+          
+      </ion-list>
+  </form>
+</ion-content>
